@@ -1,0 +1,9 @@
+.works {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+}
+
+.work {
+    width: 50%;
+}
