@@ -1,44 +1,48 @@
-import NavLink from "next/link";
+import { useRouter } from "next/router";
 
-import styles from "@/styles/nav.module.css";
 import { SITE_NAME } from "@/constants/constants";
 
-export default function Nav() {
+import Link from 'next/link'
+import NavLink from '@/components/utils/nav-link'
+
+// import styles from "@/styles/nav.module.css";
+import styles from '@/styles/nav-horizontal.module.css'
+import stylesM from '@/styles/nav-vertical.module.css'
+
+
+export default function Nav(props) {
+
+  const router = useRouter()
+
   return (
-    <nav className="bg-gray-800">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <nav className={styles.root}>
+      <div className={styles.appBar}>
         <div className="relative flex items-center justify-between h-16">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className={stylesM.root}>
             {/* <!-- Mobile menu button--> */}
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex-shrink-0 flex items-center">
-              <NavLink href="/" activeStyle={styles.activeLink}>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+            <div className={styles.navigation}>
+              <Link href="/">
+                <a className={styles.logo}>
                   {SITE_NAME}
                 </a>
-              </NavLink>
+              </Link>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <NavLink href="/categories" activeStyle={styles.activeLink}>
-                  <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                    categories
-                  </a>
+                <NavLink href="/projects" className={styles.navLink} activeClassName={styles.navLinkActive}>
+                    projects
                 </NavLink>
-                <NavLink href="/works" activeStyle={styles.activeLink}>
-                  <a
-                    className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                    aria-current="page"
-                  >
+                <NavLink href="/works" className={styles.navLink} activeClassName={styles.navLinkActive}>
                     works
-                  </a>
                 </NavLink>
-                <NavLink href="contact" activeStyle={styles.activeLink}>
-                  <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                <NavLink href="/productions" className={styles.navLink} activeClassName={styles.navLinkActive}>
+                    curatorship {'&'} production
+                </NavLink>
+                <NavLink href="/contact" className={styles.navLink} activeClassName={styles.navLinkActive}>
                     contact
-                  </a>
                 </NavLink>
               </div>
             </div>

@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main className="min-h-screen flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+      <main className="flex flex-col w-full min-h-screen flex-1 px-20">
         {/* <div className={styles.container}> */}
         {children}
         {/* </div> */}

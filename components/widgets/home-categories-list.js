@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import HomeCategoriesItem from "./home-categories-item";
 
 export default function HomeCategories({ items }) {
