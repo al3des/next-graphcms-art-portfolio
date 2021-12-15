@@ -1,25 +1,16 @@
-import Head from 'next/head'
-import { getAllCategories } from '@/lib/graphcms'
+import Head from "next/head";
+import { getAllCategories } from "@/lib/graphcms";
 
-import HomeCategories from '@/components/utils/home-categories-list'
+import HomeCategories from "@/components/widgets/home-categories-list";
 
 export default function Home(props) {
   return (
-      <> 
-          <Head>
+    <>
+      <Head>
         <title>Paloma Zamorano Ferrari</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <HomeCategories items={props.categories} />
-      </>
-  )
-}
-
-export async function getStaticProps() {
-  const categories = await getAllCategories()
-  return {
-    props: {
-      categories
-    }
-  }
+      <h1>Home</h1>
+    </>
+  );
 }

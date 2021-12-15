@@ -3,39 +3,47 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+import styles from '@/styles/works.module.css'
+
 export default function Works(props) {
   const [filteredWorks, setFilteredWorks] = React.useState(props.works);
+  const [filter, setFilter] = React.useState('reset')
+  
   const handleFilterWorksByCategory = (categoryId) => {
     if (categoryId === "reset") {
+      setFilter('reset')
       setFilteredWorks(props.works);
       return;
     }
+    setFilter(categoryId)
     setFilteredWorks(
-      props.works.filter((work) => work.category.id === categoryId)
-    );
-  };
-
+      props.works.filter((work) => work.worksCategory && work.worksCategory.id === categoryId)
+      );
+    };
+    
   return (
     <>
       <h1>Works</h1>
       <div>
-        <button onClick={() => handleFilterWorksByCategory("reset")}>
+        <button 
+        className={`${styles.btnPill} ${filter === 'reset' ? styles.filterSelected : ''}`} 
+        onClick={() => handleFilterWorksByCategory("reset")}>
           All Works
         </button>
         {props.categories.map((category) => (
           <button
             key={category.id}
             onClick={() => handleFilterWorksByCategory(category.id)}
-          >
+        className={`${styles.btnPill} ${filter === category.id ? styles.filterSelected : ''}`} 
+            // className={filter === category.id ? styles.filterSelected : ''}
+         >
             {category.title}
           </button>
         ))}
       </div>
-      <div className="flex">
+      <div className="grid grid-cols-3 gap-3">
         {filteredWorks.map((work) => (
-          <div key={work.id}>
-            <div>
-              <Link href={`/works/${work.id}`}>
+              <Link key={work.id} href={`/works/${work.id}`}>
                 <a>
                   <Image
                     src={work.image.url}
@@ -46,8 +54,6 @@ export default function Works(props) {
                   />
                 </a>
               </Link>
-            </div>
-          </div>
         ))}
       </div>
     </>
@@ -57,6 +63,7 @@ export default function Works(props) {
 export async function getStaticProps() {
   const works = await getAllWorks();
   const categories = await getAllCategories();
+  console.log(works)
   return {
     props: {
       categories,
