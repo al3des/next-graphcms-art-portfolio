@@ -7,3 +7,11 @@
 .work {
     width: 50%;
 }
+
+.filterSelected {
+    @apply font-bold bg-gray-500  text-gray-100
+}
+
+.btnPill {
+    @apply rounded-2xl p-2 m-2
+}
