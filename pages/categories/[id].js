@@ -4,8 +4,8 @@ import Image from "next/image";
 import styles from "@/styles/works.module.css";
 
 export default function Category(props) {
-  if(!props.category){
-    return <p>loading...</p>
+  if (!props.category) {
+    return <p>loading...</p>;
   }
 
   return (
@@ -16,14 +16,16 @@ export default function Category(props) {
           <p>{props.category.description}</p>
           {props.category.works.map((work) => (
             <div key={work.id} className={styles.work}>
-              <Image
-                src={work.image.url}
-                alt={work.title}
-                // layout="fill"
-                width={work.image.width}
-                height={work.image.height}
-                objectFit="contain"
-              />
+              {work.image && (
+                <Image
+                  src={work.image.url}
+                  alt={work.title}
+                  // layout="fill"
+                  width={work.image.width}
+                  height={work.image.height}
+                  objectFit="contain"
+                />
+              )}
             </div>
           ))}
         </div>

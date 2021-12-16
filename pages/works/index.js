@@ -52,15 +52,17 @@ export default function Works(props) {
           <div key={work.id} className="hover:scale-105 hover:z-50">
             <Link href={`/works/${work.id}`}>
               <a>
-                <Image
-                  src={work.image.url}
-                  alt={work.title}
-                  width={550}
-                  height={400}
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL="/placeholder.png"
-                />
+                {work.image && (
+                  <Image
+                    src={work.image.url}
+                    alt={work.title}
+                    width={550}
+                    height={400}
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL="/placeholder.png"
+                  />
+                )}
               </a>
             </Link>
           </div>

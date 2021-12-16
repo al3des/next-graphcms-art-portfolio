@@ -16,16 +16,18 @@ export default function WorkDetail(props) {
         }}
       >
         <div style={{ width: "100%", position: "relative" }}>
-          <Image
-            src={work.image.url}
-            alt={work.title}
-            height={work.image.height}
-            width={work.image.width}
-            layout="responsive"
-            objectFit="cover"
-            placeholder="blur"
-            blurDataURL='/placeholder.png'
-          />
+          {work.image && (
+            <Image
+              src={work.image.url}
+              alt={work.title}
+              height={work.image.height}
+              width={work.image.width}
+              layout="responsive"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL="/placeholder.png"
+            />
+          )}
         </div>
         <div>
           <h2>{work.title ? work.title : "sin titulo"}</h2>

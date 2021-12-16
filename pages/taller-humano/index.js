@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "@/styles/productions-list.module.css";
 
 export default function TallerHumano(props) {
-  console.log(props);
+  // console.log(props);
   if (!props.productions.length) {
     return <h2>No hay resultados</h2>;
   }
