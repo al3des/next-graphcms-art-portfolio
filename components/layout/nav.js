@@ -38,6 +38,12 @@ export default function Nav(props) {
                 <NavLink href="/works" className={styles.navLink} activeClassName={styles.navLinkActive}>
                     works
                 </NavLink>
+                <NavLink href="/taller-humano" className={styles.navLink} activeClassName={styles.navLinkActive}>
+                    taller Humano
+                </NavLink>
+                <NavLink href="/estampida" className={styles.navLink} activeClassName={styles.navLinkActive}>
+                    estampida
+                </NavLink>
                 <NavLink href="/productions" className={styles.navLink} activeClassName={styles.navLinkActive}>
                     curatorship {'&'} production
                 </NavLink>
