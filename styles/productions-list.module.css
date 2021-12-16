@@ -1,0 +1,30 @@
+.list {
+  display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    @apply gap-6
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item .header .title {
+  @apply text-2xl font-bold;
+}
+
+.pill {
+  @apply rounded-3xl bg-gray-500 text-gray-50 px-2;
+}
+
+.info {
+  @apply flex py-4;
+}
+
+.info span {
+  @apply first-of-type:mx-0 mx-1 flex-shrink-0;
+}
+
+.btn {
+  @apply bg-gray-900 hover:bg-gray-500 rounded-md text-gray-50 px-4 text-center;
+}

@@ -32,9 +32,9 @@ export default function Nav(props) {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <NavLink href="/projects" className={styles.navLink} activeClassName={styles.navLinkActive}>
+                {/* <NavLink href="/projects" className={styles.navLink} activeClassName={styles.navLinkActive}>
                     projects
-                </NavLink>
+                </NavLink> */}
                 <NavLink href="/works" className={styles.navLink} activeClassName={styles.navLinkActive}>
                     works
                 </NavLink>
