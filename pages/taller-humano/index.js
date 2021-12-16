@@ -2,7 +2,6 @@ import { getAllProductionsByType } from "@/lib/graphcms";
 import Link from "next/link";
 
 export default function TallerHumano(props) {
-  console.log(props.productions);
   if(!props.productions.length){
     return <h2>No hay resultados</h2>
   }
@@ -12,7 +11,7 @@ export default function TallerHumano(props) {
         {props.productions &&
           props.productions.map((production) => (
             <li key={production.id}>
-              <Link href={`/production/${production.id}`}>
+              <Link href={`/taller-humano/${production.id}`}>
                 {production.title}
               </Link>
             </li>
@@ -23,7 +22,7 @@ export default function TallerHumano(props) {
 }
 
 export async function getStaticProps() {
-  const productions = await getAllProductionsByType("produccion");
+  const productions = await getAllProductionsByType("taller_humano");
   return {
     props: {
       productions,
