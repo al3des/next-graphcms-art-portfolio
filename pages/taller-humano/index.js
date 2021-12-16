@@ -2,6 +2,7 @@ import { getAllProductionsByType } from "@/lib/graphcms";
 import Link from "next/link";
 
 export default function TallerHumano(props) {
+
   if(!props.productions.length){
     return <h2>No hay resultados</h2>
   }

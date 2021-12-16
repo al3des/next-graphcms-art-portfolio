@@ -49,22 +49,20 @@ export default function Works(props) {
       </div>
       <div className="grid md:grid-cols-3 gap-3">
         {filteredWorks.map((work) => (
-          <div  className='hover:scale-105 hover:z-50'>
-          <Link 
-             
-          key={work.id} href={`/works/${work.id}`}>
-            <a>
-              <Image
-                src={work.image.url}
-                alt={work.title}
-                width={550}
-                height={400}
-                objectFit="cover"
-                placeholder="blur"
-                blurDataURL="/placeholder.png"
-              />
-            </a>
-          </Link>
+          <div key={work.id} className="hover:scale-105 hover:z-50">
+            <Link href={`/works/${work.id}`}>
+              <a>
+                <Image
+                  src={work.image.url}
+                  alt={work.title}
+                  width={550}
+                  height={400}
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL="/placeholder.png"
+                />
+              </a>
+            </Link>
           </div>
         ))}
       </div>

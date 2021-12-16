@@ -11,7 +11,7 @@ export default function WorkDetail(props) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
+          gridTemplateColumns: "3fr 1fr",
           gap: "2em",
         }}
       >
