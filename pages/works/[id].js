@@ -1,5 +1,7 @@
 import { getAllWorks, getWorkById } from "@/lib/graphcms";
+import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function WorkDetail(props) {
   const { work } = props;
@@ -7,42 +9,27 @@ export default function WorkDetail(props) {
     return <p>loading...</p>;
   }
   return (
-    <>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "3fr 1fr",
-          gap: "2em",
-        }}
-      >
-        <div style={{ width: "100%", position: "relative" }}>
-          {work.image && (
-            <Image
-              src={work.image.url}
-              alt={work.title}
-              height={work.image.height}
-              width={work.image.width}
-              layout="responsive"
-              objectFit="cover"
-              placeholder="blur"
-              blurDataURL="/placeholder.png"
+    <div>
+      <Head>
+        <title>
+          {process.env.NEXT_PUBLIC_SITE_TITLE} | {props.work.title}
+        </title>
+      </Head>
+      <div className="w-lg max-h-screen flex flex-shrink">
+        {work.image && (
+          <Image
+          src={work.image.url}
+          alt={work.title}
+            height={work.image.height}
+            width={work.image.width}
+            // layout="fill"
+            objectFit="contain"
+            placeholder="blur"
+            blurDataURL="/placeholder.png"
             />
-          )}
-        </div>
-        <div>
-          <h2>{work.title ? work.title : "sin titulo"}</h2>
-          <p>{work.description}</p>
-          <p>
-            <span>Alto: </span>
-            {work.height}
-          </p>
-          <p>
-            <span>Ancho: </span>
-            {work.width}
-          </p>
-        </div>
+            )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,3 +1,38 @@
 .container {
-    @apply flex flex-col items-center justify-center min-h-screen py-2 w-3/4 mx-auto
+  @apply grid grid-cols-1 sm:grid-cols-4 p-4 mx-auto max-h-screen overflow-hidden;
+  grid-template-areas: "aside main main main";
+}
+
+.main {
+  @apply mx-auto w-full max-h-screen overflow-auto;
+    grid-area: main;
+}
+
+.aside {
+  @apply sm:visible invisible  min-h-screen;
+      grid-area: aside;
+}
+
+.nav {
+  min-height: 80%;
+  @apply flex flex-col px-4;
+}
+.nav .logo {
+  @apply font-bold text-2xl;
+}
+
+.nav .navigation {
+  @apply flex flex-col my-6;
+}
+
+.nav .navigation .navLink {
+  @apply text-gray-600;
+}
+
+.nav .navigation .navLinkActive {
+  @apply text-gray-900 font-bold;
+}
+
+.footer {
+  min-height: 20%;
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 import styles from "@/styles/works.module.css";
+import Head from "next/head";
 
 export default function Works(props) {
   const [filteredWorks, setFilteredWorks] = React.useState(props.works);
@@ -25,6 +26,10 @@ export default function Works(props) {
 
   return (
     <>
+      <Head>
+        <title>{process.env.NEXT_PUBLIC_SITE_TITLE} | Works</title>
+      </Head>
+      {/* Works Filter */}
       <div>
         <button
           className={`${styles.btnPill} ${
@@ -47,27 +52,32 @@ export default function Works(props) {
           </button>
         ))}
       </div>
-      <div className="grid md:grid-cols-3 gap-3">
-        {filteredWorks.map((work) => (
-          <div key={work.id} className="hover:scale-105 hover:z-50">
-            <Link href={`/works/${work.id}`}>
-              <a>
-                {work.image && (
-                  <Image
-                    src={work.image.url}
-                    alt={work.title}
-                    width={550}
-                    height={400}
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL="/placeholder.png"
-                  />
-                )}
-              </a>
-            </Link>
-          </div>
-        ))}
-      </div>
+      {/* Works Grid */}
+      {filteredWorks.length > 0 ? (
+        <div className="grid md:grid-cols-3 gap-3">
+          {filteredWorks.map((work) => (
+            <div key={work.id}>
+              <Link href={`/works/${work.id}`}>
+                <a>
+                  {work.image && (
+                    <Image
+                      src={work.image.url}
+                      alt={work.title}
+                      width={550}
+                      height={400}
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL="/placeholder.png"
+                    />
+                  )}
+                </a>
+              </Link>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <h2>no works in this category</h2>
+      )}
     </>
   );
 }
