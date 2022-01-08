@@ -1,15 +1,15 @@
 .container {
-  @apply grid grid-cols-1 sm:grid-cols-4 p-4 mx-auto max-h-screen overflow-hidden;
+  @apply grid grid-cols-1 sm:grid-cols-4 p-4 mx-auto overflow-hidden min-h-screen;
   grid-template-areas: "aside main main main";
 }
 
 .main {
-  @apply mx-auto w-full max-h-screen overflow-auto;
+  @apply mx-auto w-full overflow-auto;
     grid-area: main;
 }
 
 .aside {
-  @apply sm:visible invisible  min-h-screen;
+  @apply sm:visible invisible  min-h-screen fixed;
       grid-area: aside;
 }
 

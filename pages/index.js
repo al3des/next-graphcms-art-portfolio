@@ -1,16 +1,20 @@
-import Head from "next/head";
-import { getAllCategories } from "@/lib/graphcms";
-
-import HomeCategories from "@/components/widgets/home-categories-list";
+import RecentProjects from "@/components/widgets/recent-projects";
+import { getRecentProjects } from "@/lib/graphcms";
+import styles from "@/styles/home.module.css";
 
 export default function Home(props) {
   return (
-    <>
-      <Head>
-        <title>Paloma Zamorano Ferrari</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1>Home</h1>
-    </>
+    <div className={styles.home}>
+      <RecentProjects projects={props.recentProjects} />
+    </div>
   );
+}
+
+export async function getStaticProps(ctx){
+const recentProjects = await getRecentProjects(ctx.locale)
+  return {
+    props: {
+      recentProjects
+    }
+  }
 }

@@ -5,11 +5,12 @@ import React from "react";
 
 import styles from "@/styles/works.module.css";
 import Head from "next/head";
+import useTranslation from "next-translate/useTranslation";
 
 export default function Works(props) {
   const [filteredWorks, setFilteredWorks] = React.useState(props.works);
   const [filter, setFilter] = React.useState("reset");
-
+const {t} = useTranslation('common')
   const handleFilterWorksByCategory = (categoryId) => {
     if (categoryId === "reset") {
       setFilter("reset");
@@ -37,7 +38,7 @@ export default function Works(props) {
           }`}
           onClick={() => handleFilterWorksByCategory("reset")}
         >
-          All Works
+          {t('all_works')}
         </button>
         {props.categories.map((category) => (
           <button
@@ -76,15 +77,15 @@ export default function Works(props) {
           ))}
         </div>
       ) : (
-        <h2>no works in this category</h2>
+        <h2>{t('no_results')}</h2>
       )}
     </>
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(ctx) {
   const works = await getAllWorks();
-  const categories = await getAllCategories();
+  const categories = await getAllCategories(ctx.locale);
   return {
     props: {
       categories,
