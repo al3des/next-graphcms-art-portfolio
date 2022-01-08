@@ -9,7 +9,7 @@ import useTranslation from "next-translate/useTranslation";
 
 export default function ProductionsList(props) {
   const { t } = useTranslation("common");
-  if (!props.productions.length) {
+  if (!props.productions) {
     return <h2>{t("no_results")}</h2>;
   }
   return (
